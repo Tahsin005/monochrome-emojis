@@ -23,16 +23,16 @@ npm run dev
 Then open these in your browser (or `curl` them):
 
 ```
-http://localhost:3000/emoji?discord=red
-http://localhost:3000/emoji?github=blue&size=xl
-http://localhost:3000/emoji?github=yellow
-http://localhost:3000/emoji?randomname=green
+https://monochrome-emojis.vercel.app/emoji?discord=red
+https://monochrome-emojis.vercel.app/emoji?github=blue&size=xl
+https://monochrome-emojis.vercel.app/emoji?github=yellow
+https://monochrome-emojis.vercel.app/emoji?randomname=green
 ```
 
 Embed directly in a README:
 
 ```md
-![discord](http://localhost:3000/emoji?discord=red)
+![discord](https://monochrome-emojis.vercel.app/emoji?discord=red)
 ```
 
 ## Supported icons
