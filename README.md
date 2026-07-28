@@ -37,8 +37,28 @@ Embed directly in a README:
 
 ## Supported icons
 
-- `github`
-- `discord`
+- `target`
+- `puzzle`
+- `trophy`
+- `briefcase`
+- `graduation_cap`
+- `person_handrise`
+- `person_computer`
+- `telescope`
+- `rocket`
+- `triangular_ruler`
+- `open_book`
+- `gear`
+- `mail_box`
+- `email`
+- `laptop`
+- `brain`
+- `internet`
+- `back`
+- `tools`
+- `stats`
+- `tick`
+- `lock`
 - anything else → default fallback icon
 
 ## Supported colors
@@ -46,6 +66,7 @@ Embed directly in a README:
 - `red`
 - `green`
 - `blue`
+- `purple`
 - `white`
 - `black`
 - anything else → default color (`black`)
