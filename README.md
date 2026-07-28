@@ -2,6 +2,11 @@
 
 A tiny Next.js API that serves monochrome SVG icons on demand — built for embedding in GitHub `README.md` files.
 
+![target](https://monochrome-emojis.vercel.app/emoji?target=purple&size=xl)
+![rocket](https://monochrome-emojis.vercel.app/emoji?rocket=red&size=xl)
+![graduation_cap](https://monochrome-emojis.vercel.app/emoji?graduation_cap=blue&size=xl)
+![laptop](https://monochrome-emojis.vercel.app/emoji?laptop=green&size=xl)
+
 ## How it works
 
 Hit `/emoji` with an icon name as the query key and a color as its value. Optionally add `size`.
