@@ -82,6 +82,35 @@ Embed directly in a README:
 | 2xl | 48 |
 | 3xl | 64 |
 
-## Status
 
-🚧 Early version — icon set, color palette, and API shape are still evolving.
+## Embedding inline with text
+
+GitHub strips markdown image syntax (`![]()`) inside HTML blocks — table cells, `<p>`, `<a>`, etc.
+Inside those contexts, use a raw `<img>` tag instead:
+
+```html
+<img src="https://monochrome-emojis.vercel.app/emoji?rocket=purple" width="20" height="20" align="absmiddle"/> Currently building
+```
+
+Plain markdown paragraphs and list items (`- text`) don't have this problem — `![]()` renders fine there.
+The HTML `<img>` form works everywhere though, so it's the safer default if you're not sure which context you're in.
+
+## Fixing vertical alignment
+
+By default, inline images align to the text **baseline** — the bottom edge of the icon sits on the baseline,
+which usually makes it look like it's floating too high above the center of the line.
+
+GitHub strips `style=""` attributes from README HTML, so `vertical-align: middle` isn't available. Use the
+`align` attribute instead:
+
+```html
+<img src="..." align="absmiddle"/>   <!-- centers icon against the middle of the text line -->
+```
+
+| `align` value | effect |
+|---|---|
+| `absmiddle` | centers the icon on the line — use this by default |
+| `top` | aligns icon top with the tallest item on the line |
+| `texttop` | aligns icon top with the text's top |
+| `middle` | aligns icon middle with the text baseline (sits a bit high) |
+| `bottom` (default) | aligns icon bottom with the text baseline |
