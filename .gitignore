@@ -2,6 +2,9 @@
 
 # dependencies
 /node_modules
+
+# lucide icon sources (copied from node_modules/lucide-static/icons for the generator)
+/icons
 /.pnp
 .pnp.*
 .yarn/*

@@ -4,8 +4,8 @@ import { Separator } from "@/components/ui/separator";
 import { ArrowLeft } from "lucide-react";
 
 export const metadata = {
-    title: "Contribute - monochrome-emojis",
-    description: "How to add a new icon to monochrome-emojis and open a PR.",
+    title: "Contribute — monochrome-emojis",
+    description: "How to add a new custom emoji icon to monochrome-emojis and open a PR.",
 };
 
 const steps = [
@@ -18,24 +18,24 @@ const steps = [
     {
         n: "02",
         title: "Find your icon's path data",
-        body: "Grab a single-color SVG for the brand/icon you want to add — Simple Icons (simpleicons.org) is the easiest source since every icon there is already a flat, monochrome path.",
+        body: "Grab a single-color SVG for the brand or icon you want to add. Simple Icons (simpleicons.org) is the easiest source — every icon there is already a flat, monochrome path. You can also export from Figma or Illustrator as long as the result is a plain <path d=\"...\"> with no fill or stroke attributes.",
     },
     {
         n: "03",
         title: "Register it in lib/emoji-data.ts",
-        body: "Add a new entry to the ICONS map. The key is the name used in the URL (e.g. ?slack=blue), so keep it lowercase, no spaces - match the brand's common slug.",
-        code: `export const ICONS: Record<string, IconDef> = {\n  github: { ... },\n  discord: { ... },\n  slack: {\n    viewBox: "0 0 24 24",\n    paths: [\n      "M5.04 15.16a2.52 2.52 0 1 1 0-5.04h2.52v2.52a2.52 2.52 0 0 1-2.52 2.52Zm...",\n    ],\n  },\n};`,
+        body: "Add a new entry to the ICONS map. The key becomes the URL slug (e.g. ?slack=blue), so keep it lowercase with underscores — match the brand's common slug.",
+        code: `export const ICONS: Record<string, IconDef> = {\n  // existing icons...\n  slack: {\n    viewBox: "0 0 24 24",\n    paths: [\n      "M5.04 15.16a2.52 2.52 0 1 1 0-5.04h2.52v2.52...",\n    ],\n  },\n};`,
     },
     {
         n: "04",
         title: "Follow the path rules",
-        body: 'Keep paths as raw <path d="..."> data only - no fill, stroke, or style attributes inside them. Color is injected globally via the fill on the outer <svg>, so a hardcoded fill on a path will silently override it. Use a square viewBox (e.g. 0 0 24 24) so sizing stays consistent across icons.',
+        body: 'Keep paths as raw path data only — no fill, stroke, or style attributes inside them. Color is injected globally via the fill on the outer <svg>, so a hardcoded fill on a path will silently override it. Use a square viewBox (e.g. 0 0 24 24) so sizing stays consistent across icons.',
     },
     {
         n: "05",
         title: "Test it locally",
-        body: "Run the dev server and check your icon two ways: search for it on the homepage picker, and hit the raw route directly.",
-        code: `npm run dev\n\n# then visit:\nhttp://localhost:3000/            # search "slack" in the picker\nhttp://localhost:3000/emoji?slack=blue&size=lg`,
+        body: "Run the dev server and check your icon two ways: search for it in the emoji tab on the homepage, and hit the raw API route directly.",
+        code: `npm run dev\n\n# visit the explorer (switch to "emoji" tab, search your icon):\nhttp://localhost:3000/\n\n# or hit the route directly:\nhttp://localhost:3000/emoji?slack=blue&size=lg`,
     },
     {
         n: "06",
@@ -61,11 +61,24 @@ export default function ContributePage() {
                         Contributing
                     </p>
                     <h1 className="text-3xl font-semibold tracking-tight mb-4 font-sans">
-                        Add an icon
+                        Add an emoji icon
                     </h1>
                     <p className="text-muted-foreground font-sans leading-relaxed">
-                        Every icon lives as one entry in a single file. No build config,
-                        no asset pipeline - add the entry, test it, open a PR.
+                        Every custom icon lives as one entry in a single file. No build config,
+                        no asset pipeline — add the entry, test it, open a PR.
+                    </p>
+                    <p className="text-muted-foreground font-sans leading-relaxed mt-2 text-sm">
+                        Note: the Lucide icon set (<code className="font-mono text-foreground text-xs">/lucid</code> route) is generated automatically
+                        from the Lucide library and isn't open for contributions here — use{" "}
+                        <a
+                            href="https://github.com/lucide-icons/lucide"
+                            className="underline hover:text-foreground transition-colors"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            lucide-icons/lucide
+                        </a>{" "}
+                        for that.
                     </p>
                 </header>
 
@@ -88,7 +101,7 @@ export default function ContributePage() {
 
                 <Separator className="mt-16" />
                 <footer className="pt-6 text-xs text-muted-foreground font-sans">
-                    Questions or unsure an icon fits? Open an issue first -{" "}
+                    Questions or unsure an icon fits? Open an issue first —{" "}
                     <a
                         href="https://github.com/Tahsin005/monochrome-emojis/issues"
                         className="text-muted-foreground hover:text-foreground underline transition-colors"
